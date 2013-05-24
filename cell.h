@@ -28,6 +28,7 @@ Computer Graphics Maze.
 #define OBJ_DOOR_VERT   3  // porta virada Norte-Sul
 #define OBJ_DOOR_HORIZ  4  // porta virada Este-Oeste
 #define OBJ_WALL_LIGHT  5
+#define OBJ_DOOR        6
 
 
 /* Estrutura que define os valores nas celulas do mapa do labirinto.

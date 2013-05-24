@@ -40,10 +40,12 @@ Computer Graphics Maze.
 #define VIEW3D_IX_TEXTURE_CHAO_PEDRA   4
 #define VIEW3D_IX_TEXTURE_BURACO       5
 #define VIEW3D_IX_TEXTURE_CHAVE        6
-#define VIEW3D_TEXTURES_NUMBER         7
+#define VIEW3D_TEXTURES_DOOR           7
+#define VIEW3D_TEXTURES_NUMBER         8
+
 
 // Cores
-#define VIEW3D_COLOR_3UB_DOOR        0x00, 0x00, 0x00
+#define VIEW3D_COLOR_3UB_DOOR        0xFF, 0xFF, 0xFF
 #define VIEW3D_COLOR_3UB_WALL_LIGHT  0xFF, 0xFF, 0xFF
 #define VIEW3D_COLOR_3UB_FLOOR_PIT   0xFF, 0xFF, 0xFF
 #define VIEW3D_COLOR_3UB_FLOOR_KEY   0x00, 0x00, 0x00
