@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/mainwindow/imgs">
+        <file>mainwindow.icon.turnLeft.png</file>
+        <file>mainwindow.icon.goFwd.png</file>
+        <file>mainwindow.icon.turnRight.png</file>
+        <file>mainwindow.icon.png</file>
+        <file>mainwindow.icon.cc.png</file>
+    </qresource>
+    <qresource prefix="/mainwindow/texture">
+        <file>mainwindow.texture.wall.png</file>
+        <file>mainwindow.texture.ceiling.png</file>
+        <file>mainwindow.texture.floor.png</file>
+        <file>chaopedra.PNG</file>
+        <file>tijolo.PNG</file>
+        <file>buraco.PNG</file>
+        <file>chave.PNG</file>
+    </qresource>
+</RCC>
