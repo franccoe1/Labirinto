@@ -111,6 +111,7 @@ void ViewMap::paint()
 void ViewMap::paint( int x, int y, Cell c )
 {
     GLfloat x0, x1, y0, y1;
+    float angle;
 
     // Verificacoes basicas
     assert( x >= 0  &&  x < map_width   &&
@@ -133,7 +134,20 @@ void ViewMap::paint( int x, int y, Cell c )
         glColor3ub( VIEWMAP_COLOR_3UB_PLAYER1 );
     else
         glColor3ub( VIEWMAP_COLOR_3UB_FLOOR );
-
+    if( c.object == OBJ_FLOOR_PIT )
+    {
+        glBegin(GL_POLYGON);
+        x0 = x; x1 = x +0.5F;
+        y0 = y; y1 = y+ 0.5f;
+        for (int i = 0; i< 100; i++)
+        {
+            angle=i*2*M_PI/100;             // vai fazer mini fatias de pizza de forma a fazer um circulo. quanto mais pequeno o andulo mais perfeito o circulo
+            glVertex2f((x1) + (cos(angle)*0.5),(y1)+(sin(angle)*0.5));
+        }
+        glEnd();
+    }
+    else
+    {
     glBegin( GL_QUADS );
     x0 = x;  x1 = x + 1.0f;
     y0 = y;  y1 = y + 1.0f;
@@ -142,7 +156,7 @@ void ViewMap::paint( int x, int y, Cell c )
     glVertex2f( x1, y1 );  // Canto superior direito
     glVertex2f( x1, y0 );  // Canto inferior direito
     glEnd();
-
+}
     if( paint_flushes )
         glFlush();
 }

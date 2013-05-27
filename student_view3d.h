@@ -45,11 +45,12 @@ Computer Graphics Maze.
 
 
 // Cores
-#define VIEW3D_COLOR_3UB_DOOR        0xFF, 0xFF, 0xFF
+#define VIEW3D_COLOR_3UB_DOOR        0x00, 0x00, 0x00
 #define VIEW3D_COLOR_3UB_WALL_LIGHT  0xFF, 0xFF, 0xFF
 #define VIEW3D_COLOR_3UB_FLOOR_PIT   0xFF, 0xFF, 0xFF
 #define VIEW3D_COLOR_3UB_FLOOR_KEY   0x00, 0x00, 0x00
 #define VIEW3D_COLOR_3UB_PLAYER1     0xFF, 0x33, 0x33
+#define VIEW3D_COLOR_3UB_BURACO      0xFB, 0xBF, 0xBB
 
 
 
