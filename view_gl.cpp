@@ -446,7 +446,7 @@ void View3DGL::initializeGL()
 
 
     // Prepara a imagem da textura do tecto
-    if( !img.load(":/mainwindow/texture/buraco.PNG") )
+    if( !img.load(":/mainwindow/texture/peixes.PNG") )
         {
         img = QImage( 16, 16, QImage::Format_RGB888 );
         img.fill( QColor(VIEW2D_COLOR_3UB_BURACO).rgb() );

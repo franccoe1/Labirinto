@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by Qt Creator 2.4.1, 2013-05-29T17:06:38. -->
+<!-- Written by Qt Creator 2.4.1, 2013-05-30T00:17:58. -->
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -101,7 +101,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">2</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">C:/Documents and Settings/Administrador/Ambiente de trabalho/cgmaze-build-desktop-Qt_4_8_1_for_Desktop_-_MinGW__Qt_SDK__Debug</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">C:/Documents and Settings/Administrador/Ambiente de trabalho/Projecto CG/branches/cgmaze-build-desktop-Qt_4_8_1_for_Desktop_-_MinGW__Qt_SDK__Debug</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId">2</value>
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
@@ -151,7 +151,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">0</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">C:/Documents and Settings/Administrador/Ambiente de trabalho/cgmaze-build-desktop-Qt_4_8_1_for_Desktop_-_MinGW__Qt_SDK__Release</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">C:/Documents and Settings/Administrador/Ambiente de trabalho/Projecto CG/branches/cgmaze-build-desktop-Qt_4_8_1_for_Desktop_-_MinGW__Qt_SDK__Release</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId">2</value>
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
@@ -201,7 +201,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">2</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">C:/Documents and Settings/Administrador/Ambiente de trabalho/cgmaze-build-desktop-Qt_4_8_0_for_Desktop_-_MinGW__Qt_SDK__Debug</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">C:/Documents and Settings/Administrador/Ambiente de trabalho/Projecto CG/branches/cgmaze-build-desktop-Qt_4_8_0_for_Desktop_-_MinGW__Qt_SDK__Debug</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId">1</value>
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
@@ -251,7 +251,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">0</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">C:/Documents and Settings/Administrador/Ambiente de trabalho/cgmaze-build-desktop-Qt_4_8_0_for_Desktop_-_MinGW__Qt_SDK__Release</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">C:/Documents and Settings/Administrador/Ambiente de trabalho/Projecto CG/branches/cgmaze-build-desktop-Qt_4_8_0_for_Desktop_-_MinGW__Qt_SDK__Release</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId">1</value>
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
@@ -356,7 +356,7 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.EnvironmentId</variable>
-  <value type="QString">{6477c506-7e37-4193-88dd-21b9892d2a94}</value>
+  <value type="QString">{abba8e25-a401-4abb-8033-b96b156b6d1d}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.FileVersion</variable>
