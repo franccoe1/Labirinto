@@ -67,6 +67,7 @@ View3D::View3D( Map *map, const QImage textures[VIEW3D_TEXTURES_NUMBER] )
     glEnable( GL_DEPTH_TEST );
     glDepthFunc( GL_LEQUAL );
     glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
@@ -296,36 +297,230 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
       glBegin( GL_QUADS );
       glNormal3i( 0, 0, 1 );
       glColor3f( 0.45f, 0.64f, 0.69f );
-      glTexCoord2i( 0, 0 );  glVertex3f(  x1-0.1,  y, 0.0f );  // Canto inf-esq
-      glTexCoord2i( 1, 0 );  glVertex3f( x1-0.1,  y, 0.1f );  // Canto inf-dir
+      glTexCoord2i( 0, 0 );  glVertex3f(  x1-0.1,  y+0.1, 0.0f );  // Canto inf-esq
+      glTexCoord2i( 1, 0 );  glVertex3f( x1-0.1,  y+0.1, 0.1f );  // Canto inf-dir
       glTexCoord2i( 1, 1 );  glVertex3f( x1-0.1, y1-0.1, 0.1f );  // Canto sup-dir
       glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y1-0.1, 0.0f );  // Canto sup-esq
       glEnd();
-/*
+
       //lado de um degrau direito
      glDisable(GL_TEXTURE_2D);
      glBegin( GL_QUADS );
      glNormal3i( 0, 0, 1 );
      glColor3f( 0.45f, 0.64f, 0.69f );
-     glTexCoord2i( 0, 0 );  glVertex3f(  x+0.1,  y+0.1, 0.0f );  // Canto inf-esq
-     glTexCoord2i( 1, 0 );  glVertex3f( x1+0.1, y1+0.1, 0.1f );  // Canto inf-dir
-     glTexCoord2i( 1, 1 );  glVertex3f( x1+0.1, y1-0.1, 0.1f );  // Canto sup-dir
+     glTexCoord2i( 0, 0 );  glVertex3f(  x+0.1, y+0.1, 0.0f );  // Canto inf-esq
+     glTexCoord2i( 1, 0 );  glVertex3f( x+0.1, y+0.1, 0.1f );  // Canto inf-dir
+     glTexCoord2i( 1, 1 );  glVertex3f( x+0.1, y1-0.1, 0.1f );  // Canto sup-dir
      glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1-0.1, 0.0f );  // Canto sup-esq
      glEnd();
-/*
+
        //chao do degrau
        glDisable(GL_TEXTURE_2D);
        glBegin( GL_QUADS );
        glNormal3i( 0, 0, 1 );
-       glColor3f( 0.45f, 0.64f, 0.69f );  //cor azul bebe
-       glTexCoord2i( 0, 0 );  glVertex3f(  x,  y+0.1, 0.1f );  // Canto inf-esq
-       glTexCoord2i( 1, 0 );  glVertex3f( x,  y1-0.1, 0.1f );  // Canto inf-dir
-       glTexCoord2i( 1, 1 );  glVertex3f( x1, y1-0.1, 0.1f );  // Canto sup-dir
-       glTexCoord2i( 0, 1 );  glVertex3f(  x1, y+0.1, 0.1f );  // Canto sup-esq
+       glColor3f( 0.4f, 0.0f, 0.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x+0.1,  y+0.1, 0.1f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x+0.1,  y1-0.1, 0.1f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1-0.1, y1-0.1, 0.1f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y+0.1, 0.1f );  // Canto sup-esq
+       glEnd();
+
+       //tecto
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.4f, 0.0f, 0.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x+0.1,  y+0.1, 0.99f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x+0.1,  y1-0.1, 0.99f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1-0.1, y1-0.1, 0.99f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y+0.1, 0.99f );  // Canto sup-esq
+       glEnd();
+
+// PILARES
+
+       // Pilar 1
+       //parede 1.1
+
+     glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x,  y, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x+0.1, y, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y, 0.0f );  // Canto sup-esq
+       glEnd();
+
+       //parede 1.2
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x+0.1,  y, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x+0.1,  y, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x+0.1, y+0.1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y+0.1, 0.0f );  // Canto sup-esq
+       glEnd();
+
+       //parede 1.3
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f( x,  y+0.1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x,  y+0.1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x+0.1, y+0.1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f( x+0.1, y+0.1, 0.0f );  // Canto sup-esq
+       glEnd();
+
+       //parede 1.4
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f( x,  y, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x,  y, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x, y+0.1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f( x, y+0.1, 0.0f );  // Canto sup-esq
+       glEnd();
+
+       // Pilar 2
+
+       //parede 2.1
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x1-0.1,  y, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x1-0.1,  y, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1, y, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1, y, 0.0f );  // Canto sup-esq
        glEnd();
 
 
-*/
+       //parede 2.2
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x1,  y, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x1,  y, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1, y+0.1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1, y+0.1, 0.0f );  // Canto sup-esq
+       glEnd();
+
+       //parede 2.3
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x1-0.1,  y+0.1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x1-0.1,  y+0.1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1, y+0.1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1, y+0.1, 0.0f );  // Canto sup-esq
+       glEnd();
+
+       //parede 2.4
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x1-0.1,  y, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x1-0.1,  y, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1-0.1, y+0.1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y+0.1, 0.0f );  // Canto sup-esq
+       glEnd();
+
+
+       //Pilar 3
+       //parede 3.1
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x,  y1-0.1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x,  y1-0.1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x+0.1, y1-0.1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1-0.1, 0.0f );  // Canto sup-esq
+       glEnd();
+
+       //parede 3.2
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x+0.1,  y1-0.1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x+0.1,  y1-0.1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x+0.1, y1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1, 0.0f );  // Canto sup-esq
+       glEnd();
+       //parede 3.3
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x,  y1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x+0.1, y1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1, 0.0f );  // Canto sup-esq
+       glEnd();
+       //parede 3.4
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f( x,  y1-0.1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x,  y1-0.1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x, y1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f( x, y1, 0.0f );  // Canto sup-esq
+       glEnd();
+
+       //Pilar 4
+       //parede 4.1
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x1-0.1,  y1-0.1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x1-0.1,  y1-0.1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1, y1-0.1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1-0.1, 0.0f );  // Canto sup-esq
+       glEnd();
+       //parede 4.2
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x1,  y1-0.1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x1,  y1-0.1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1, 0.0f );  // Canto sup-esq
+       glEnd();
+       //parede 4.3
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x1-0.1,  y1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x1-0.1,  y1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1, 0.0f );  // Canto sup-esq
+       glEnd();
+       //parede 4.4
+       glDisable(GL_TEXTURE_2D);
+       glBegin( GL_QUADS );
+       glNormal3i( 0, 0, 1 );
+       glColor3f( 0.0f, 0.0f, 1.0f );  //cor azul bebe
+       glTexCoord2i( 0, 0 );  glVertex3f(  x1-0.1,  y1-0.1, 0.0f );  // Canto inf-esq
+       glTexCoord2i( 1, 0 );  glVertex3f( x1-0.1,  y1-0.1, 1.0f );  // Canto inf-dir
+       glTexCoord2i( 1, 1 );  glVertex3f( x1-0.1, y1, 1.0f );  // Canto sup-dir
+       glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y1, 0.0f );  // Canto sup-esq
+       glEnd();
+
+
+
+
+
 
 
     }
@@ -387,20 +582,6 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     // Chao
     if( pc->object == OBJ_FLOOR_PIT )
     {
-        //glDisable( GL_TEXTURE_2D );
-        glEnable( GL_TEXTURE_2D );
-        glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_BURACO]);
-
-        glBegin( GL_QUADS );
-        glDisable(GL_TEXTURE_2D);
-        glEnable(GL_BLEND);
-        glColor4ub(VIEW3D_COLOR_3UB_BURACO, 90);
-
-        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-esq
-        glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 0.0f );  // Canto inf-dir
-        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 0.0f );  // Canto sup-dir
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y, 0.0f );  // Canto sup-esq
-        glEnd();
 
 
         glBegin( GL_QUADS );
@@ -440,6 +621,19 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x1,  y1, -1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f( x1,  y, -1.0f );  // Canto sup-esq */
         glEnd();
+
+        //VIDRO
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+        glBegin( GL_QUADS );
+        glColor4f(0.5019607843f,0.9490196078f,1.0f,0.5f);
+        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.901,  y+0.901, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.901,  y1-0.901, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1-0.901, y1-0.901, 0.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.901, y+0.901, 0.0f );  // Canto sup-esq
+        glEnd();
+        glDisable(GL_BLEND);
 
     }
     else
