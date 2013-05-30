@@ -681,7 +681,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     {
 
 
-
+        glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         // Face da frente (dentro do labirinto, a olhar para Norte)
         glNormal3i( 0, -1, 0 );  // Normal a apontar para o observador
@@ -718,21 +718,6 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x1,  y1, -1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f( x1,  y, -1.0f );  // Canto sup-esq */
         glEnd();
-
-                            //================[VIDRO (BLEND)]================
-        glDisable(GL_TEXTURE_2D);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-        glBegin( GL_QUADS );
-        glColor4f(0.5019607843f,0.9490196078f,1.0f,0.5f);
-        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.005f );  // Canto inf-esq
-        glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 0.005f );  // Canto inf-dir
-        glTexCoord2i( 1, 1 );  glVertex3f( x+0.5, y1, 0.005f );  // Canto sup-dir
-        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.5, y, 0.005f );  // Canto sup-esq
-        glEnd();
-        glDisable(GL_BLEND);
-
-
 
                     //================[RECORTES DO BURACO (ESCAVADO)]================
 
@@ -775,7 +760,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
 
         //  Lado nº1
         glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.0f, 0.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
+        glColor3f( 0.023f, 0.430f, 1.0f );  // 1.0f = nao adulterar cores da textura
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
         glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-esq
@@ -785,7 +770,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glEnd();
 
 
-        glColor3f( 1.0f, 0.0f, 0.0f );  // 1.0f = nao adulterar cores da textura
+        glColor3f( 0.480f, 0.96f, 0.25f );  // 1.0f = nao adulterar cores da textura
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
         glTexCoord2i( 0, 0 );  glVertex3f(  x+0.5,  y+0.2, 0.0f );  // Canto inf-esq
@@ -796,7 +781,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
 
         // Lado nº2
 
-        glColor3f( 0.0f, 0.0f, 1.0f );
+        glColor3f( 0.486f, 0.85f, 0.597f );
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
         glTexCoord2i( 0, 0 );  glVertex3f(  x,  y1, 0.0 );  // Canto inf-esq
@@ -825,7 +810,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 0 );  glVertex3f(  x1,  y, -1.0f );
         glEnd();
 
-        glColor3f( 1.0f, 0.0f, 0.0f );
+        glColor3f( 0.032f, 0.744f, 0.554f );
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
         glTexCoord2i( 1, 0 );  glVertex3f( x+0.7,  y1-0.4, 0.0f );  // Canto inf-dir
@@ -836,7 +821,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
 
 
         //Lado nº4
-        glColor3f( 0.0f, 0.0f, 1.0f );
+        glColor3f( 0.484f, 0.184f, 0.843f );
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
         glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-esq
@@ -845,7 +830,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, -1.0f );
         glEnd();
 
-        glColor3f( 1.0f, 0.0f, 0.0f );
+        glColor3f( 0.749f, 0.475f, 0.732f );
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
         glTexCoord2i( 1, 0 );  glVertex3f( x+0.2, y+0.5, 0.0f );  // Canto inf-esq
@@ -853,6 +838,81 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x,  y1, -1.0f );  // Canto sup-dir
         glTexCoord2i( 1, 0 );  glVertex3f( x+0.2, y+0.5, -1.0f );
         glEnd();
+
+
+        //================[VIDRO (BLEND)]================
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+        glBegin( GL_QUADS );
+        glColor4f(0.5019607843f,0.9490196078f,1.0f,0.5f);
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.005f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 0.005f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x+0.5, y1, 0.005f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.5, y, 0.005f );  // Canto sup-esq
+        glEnd();
+        glDisable(GL_BLEND);
+
+    }
+    else if(pc->object == OBJ_FLOOR_KEY)
+    {
+        glDisable(GL_TEXTURE_2D);
+        glColor3ub(VIEW3D_COLOR_3UB_FLOOR_KEY);
+
+        glBegin(GL_QUADS);
+        glColor3f(1.0f,1.0f,1.0f);
+        glNormal3i(0,-1,0);
+        glTexCoord2i(0,0); glVertex3f(x+0.70, y+0.70, 0.4f);
+        glTexCoord2i(1,0); glVertex3f(x-0.70, y+0.70, 0.4f);
+        glTexCoord2i(1,1); glVertex3f(x-0.70, y-0.70, 0.4f);
+        glTexCoord2i(0,1); glVertex3f(x+0.70, y-0.70, 0.4f);
+
+        glBegin(GL_TRIANGLES);
+        glColor3f(1.0f,1.0f,1.0f);
+        glNormal3i(1,0,0);
+
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(0,1); glVertex3f(x+0.3f, y1-0.7f, 0.4f);
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(1,0); glVertex3f(x1-0.3f, y+0.3f, 0.4f);
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
+
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(0,1); glVertex3f(x1-0.3f, y+0.3f, 0.4f);
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(1,0); glVertex3f(x+0.7f, y1-0.3f, 0.4f);
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
+
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(0,1); glVertex3f(x+0.3f, y1-0.7f, 0.4f);
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(1,0); glVertex3f(x1-0.7f, y-0.7f, 0.4f);
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
+
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(0,1); glVertex3f(x+0.7f, y1-0.3f, 0.4f);
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(1,0); glVertex3f(x1-0.7f, y+0.7f, 0.4f);
+        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
+
+        glEnd();
+
+        glEnable( GL_TEXTURE_2D );
+        glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CHAO_PEDRA] );
+        glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
+
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );  // Normal a apontar para cima
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x1,  y, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 0.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x, y1, 0.0f );  // Canto sup-esq
+        glEnd();
+
 
     }
     else
@@ -870,5 +930,6 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x, y1, 0.0f );  // Canto sup-esq
         glEnd();
     }
+
 
 }

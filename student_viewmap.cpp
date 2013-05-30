@@ -137,7 +137,7 @@ void ViewMap::paint( int x, int y, Cell c )
     if( c.object == OBJ_FLOOR_PIT )
     {
         glBegin(GL_POLYGON);
-        x0 = x; x1 = x +0.5F;
+        x0 = x; x1 = x +0.5f;
         y0 = y; y1 = y+ 0.5f;
         for (int i = 0; i< 100; i++)
         {
