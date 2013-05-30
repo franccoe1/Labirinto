@@ -224,11 +224,6 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glDisable( GL_TEXTURE_2D );  // desliga texturas
         glColor3ub( VIEW3D_COLOR_3UB_DOOR );
     }
-    else if( pc->object == OBJ_WALL_LIGHT )
-    {
-        glDisable( GL_TEXTURE_2D );  // desliga texturas
-        glColor3ub( VIEW3D_COLOR_3UB_WALL_LIGHT );
-    }
     else
     {
         glEnable( GL_TEXTURE_2D );
@@ -236,10 +231,10 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
     }
 
-    // porta
+                        //=================[PORTA]=================
     if( pc->isDoor() )
     {
-        // Tecto DA PORTA
+        // Tecto DA PORTA*************************
         glEnable( GL_TEXTURE_2D );
         glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CEILING] );
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
@@ -257,8 +252,9 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
 
 
-        //Degraus--------------------------------------
-        //chao azul
+                        //=================[DEGRAU DA PORTA]=================
+
+        //chao azul*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -269,7 +265,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x, y1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //lado de um degrau frente
+        //lado de um degrau frente*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -281,7 +277,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glEnd();
 
 
-        //lado de um degrau tras
+        //lado de um degrau tras*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -292,7 +288,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y1-0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //lado de um degrau esquerdo
+        //lado de um degrau esquerdo*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -303,7 +299,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y1-0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //lado de um degrau direito
+        //lado de um degrau direito*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -314,7 +310,8 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1-0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //chao do degrau
+                        //=================[CHAO DA PORTA]=================
+
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -325,7 +322,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y+0.1, 0.1f );  // Canto sup-esq
         glEnd();
 
-        //TECTO
+                        //=================[TECTO DA PORTA]=================
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -336,7 +333,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.01, y+0.01, 0.807f );  // Canto sup-esq
         glEnd();
 
-        //lado frente do tecto
+        //lado frente do tecto*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -347,7 +344,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y-0.0001, 0.8f );  // Canto sup-esq
         glEnd();
 
-       //lado tras do tecto
+       //lado tras do tecto*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -358,7 +355,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1+0.0001, 0.8f );  // Canto sup-esq
         glEnd();
 
-        //lado esquerdo do tecto
+        //lado esquerdo do tecto*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -369,7 +366,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1-0.1, 0.8f );  // Canto sup-esq
         glEnd();
 
-        //lado direito do tecto
+        //lado direito do tecto*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -381,16 +378,12 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glEnd();
 
 
+                  //=================[PILARES DA PORTA]=================
 
 
+        //======[PILAR 1]======
 
-
-
-        // PILARES
-
-        // Pilar 1
-        //parede 1.1
-
+        //parede 1.1*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -401,7 +394,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //parede 1.2
+        //parede 1.2*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -412,7 +405,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y+0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //parede 1.3
+        //parede 1.3*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -423,7 +416,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f( x+0.1, y+0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //parede 1.4
+        //parede 1.4*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -434,9 +427,9 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f( x, y+0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        // Pilar 2
+        //======[PILAR 2]======
 
-        //parede 2.1
+        //parede 2.1*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -448,7 +441,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glEnd();
 
 
-        //parede 2.2
+        //parede 2.2*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -459,7 +452,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y+0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //parede 2.3
+        //parede 2.3*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -470,7 +463,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y+0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //parede 2.4
+        //parede 2.4*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -482,8 +475,9 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glEnd();
 
 
-        //Pilar 3
-        //parede 3.1
+        //======[PILAR 3]======
+
+        //parede 3.1*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -494,7 +488,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1-0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //parede 3.2
+        //parede 3.2*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -504,7 +498,8 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x+0.1, y1, 1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1, 0.0f );  // Canto sup-esq
         glEnd();
-        //parede 3.3
+
+        //parede 3.3*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -514,7 +509,8 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x+0.1, y1, 1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1, 0.0f );  // Canto sup-esq
         glEnd();
-        //parede 3.4
+
+        //parede 3.4*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -525,8 +521,9 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f( x, y1, 0.0f );  // Canto sup-esq
         glEnd();
 
-        //Pilar 4
-        //parede 4.1
+        //======[PILAR 4]======
+
+        //parede 4.1*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -536,7 +533,8 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x1, y1-0.1, 1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1-0.1, 0.0f );  // Canto sup-esq
         glEnd();
-        //parede 4.2
+
+        //parede 4.2*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -546,7 +544,8 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1, 0.0f );  // Canto sup-esq
         glEnd();
-        //parede 4.3
+
+        //parede 4.3*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -556,7 +555,8 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1, 0.0f );  // Canto sup-esq
         glEnd();
-        //parede 4.4
+
+        //parede 4.4*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -566,35 +566,81 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x1-0.1, y1, 1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y1, 0.0f );  // Canto sup-esq
         glEnd();
-
-
-
-
-
-
-
     }
-    else
+    else if( pc->object == OBJ_WALL_LIGHT )
     {
+        glEnable( GL_TEXTURE_2D );
+        glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_WALL] );
+        glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
+
         glBegin( GL_QUADS );
+
         // Face da frente (dentro do labirinto, a olhar para Norte)
         glNormal3i( 0, -1, 0 );  // Normal a apontar para o observador
         glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-esq
         glTexCoord2i( 1, 0 );  glVertex3f( x1,  y, 0.0f );  // Canto inf-dir
         glTexCoord2i( 1, 1 );  glVertex3f( x1,  y, 1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f(  x,  y, 1.0f );  // Canto sup-esq
+
         // Face de tras (dentro do labirinto, a olhar para Norte)
         glNormal3i( 0, 1, 0 );  // Normal a apontar para longe do observador
         glTexCoord2i( 0, 0 );  glVertex3f( x1, y1, 0.0f );  // Canto inf-esq
         glTexCoord2i( 1, 0 );  glVertex3f(  x, y1, 0.0f );  // Canto inf-dir
         glTexCoord2i( 1, 1 );  glVertex3f(  x, y1, 1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f( x1, y1, 1.0f );  // Canto sup-esq
+
         // Face da direita (dentro do labirinto, a olhar para Norte)
         glNormal3i( 1, 0, 0 );  // Normal a apontar para a direita
         glTexCoord2i( 0, 0 );  glVertex3f( x1,  y, 0.0f );  // Canto inf-esq
         glTexCoord2i( 1, 0 );  glVertex3f( x1, y1, 0.0f );  // Canto inf-dir
         glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 1.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f( x1,  y, 1.0f );  // Canto sup-esq
+
+        // Face da esquerda (dentro do labirinto, a olhar para Norte)
+        glNormal3i( -1, 0, 0 );  // Normal a apontar para a esquerda
+        glTexCoord2i( 0, 0 );  glVertex3f(  x, y1, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f(  x,  y, 1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x, y1, 1.0f );  // Canto sup-esq
+        glEnd();
+
+
+                    //=================[CANDEIROS]=================
+        glDisable(GL_TEXTURE_2D);
+        glBegin(GL_QUADS);
+        glNormal3i( 0, 0, 1 );  // Normal a apontar para a esquerda
+        glColor3ub(0xFF,0xFF,0xFF);
+        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.1, y, 0.7f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f(  x+0.1,  y1, 0.9f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f(  x+0.1,  y1, 0.9f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y, 0.7f );  // Canto sup-esq
+        glEnd();
+    }
+    else
+    {
+        glBegin( GL_QUADS );
+
+        // Face da frente (dentro do labirinto, a olhar para Norte)
+        glNormal3i( 0, -1, 0 );  // Normal a apontar para o observador
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x1,  y, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1,  y, 1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x,  y, 1.0f );  // Canto sup-esq
+
+        // Face de tras (dentro do labirinto, a olhar para Norte)
+        glNormal3i( 0, 1, 0 );  // Normal a apontar para longe do observador
+        glTexCoord2i( 0, 0 );  glVertex3f( x1, y1, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f(  x, y1, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f(  x, y1, 1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f( x1, y1, 1.0f );  // Canto sup-esq
+
+        // Face da direita (dentro do labirinto, a olhar para Norte)
+        glNormal3i( 1, 0, 0 );  // Normal a apontar para a direita
+        glTexCoord2i( 0, 0 );  glVertex3f( x1,  y, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x1, y1, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f( x1,  y, 1.0f );  // Canto sup-esq
+
         // Face da esquerda (dentro do labirinto, a olhar para Norte)
         glNormal3i( -1, 0, 0 );  // Normal a apontar para a esquerda
         glTexCoord2i( 0, 0 );  glVertex3f(  x, y1, 0.0f );  // Canto inf-esq
@@ -617,7 +663,8 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     // Verificoes basicas
     assert( pc != NULL );
 
-    // Tecto
+                        //================[TECTO]================
+
     glEnable( GL_TEXTURE_2D );
     glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CEILING] );
     glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
@@ -629,13 +676,11 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     glTexCoord2i( 0, 1 );  glVertex3f(  x, y1, 1.0f );  // Canto sup-esq
     glEnd();
 
-    // Chao
+                        //================[BURACO]================
     if( pc->object == OBJ_FLOOR_PIT )
     {
-        // BURACO Aquário
-        glEnable( GL_TEXTURE_2D );
-        glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_BURACO] );
-        glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
+
+
 
         glBegin( GL_QUADS );
         // Face da frente (dentro do labirinto, a olhar para Norte)
@@ -644,7 +689,6 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 0.0f );  // Canto inf-dir
         glTexCoord2i( 1, 1 );  glVertex3f( x1,  y1, 0.0f );  // Canto sup-dir
         glTexCoord2i( 0, 1 );  glVertex3f(  x1,  y1, -1.0f );  // Canto sup-esq
-
 
         // Face de tras (dentro do labirinto, a olhar para Norte)
         glNormal3i( 0, 1, 0 );  // Normal a apontar para longe do observador
@@ -675,7 +719,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f( x1,  y, -1.0f );  // Canto sup-esq */
         glEnd();
 
-        //VIDRO
+                            //================[VIDRO (BLEND)]================
         glDisable(GL_TEXTURE_2D);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
@@ -690,99 +734,54 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
 
 
 
-        //RECORTES DO BURACO
-        //LADO NORTE
+                    //================[RECORTES DO BURACO (ESCAVADO)]================
+
+        //LADO NORTE***************************************
         glDisable( GL_TEXTURE_2D );
         glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
         glBegin( GL_TRIANGLE_STRIP );
         glNormal3i( 0, 0, 1 );
         glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.006f );  // Canto inf-esq
-        glTexCoord2i( 1, 0 );  glVertex3f( x+0.2,  y+0.1, 0.006f );  // Canto inf-dir
-        glTexCoord2i( 1, 1 );  glVertex3f( x+0.4, y, 0.006f );  // Canto sup-dir
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.5,  y+0.2, 0.006f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y, 0.006f );  // Canto sup-dir
         glEnd();
 
-        glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
         glBegin( GL_TRIANGLE_STRIP );
-        glTexCoord2i( 1, 1 );  glVertex3f( x+0.4, y, 0.006f );
-        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.6, y+0.2, 0.006f );  // Canto sup-esq
-        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.8, y+0.0, 0.006f );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y1, 0.006f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.3,  y1-0.3, 0.006f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 0.006f );  // Canto sup-dir
         glEnd();
 
-        glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
         glBegin( GL_TRIANGLE_STRIP );
-        glTexCoord2i( 1, 1 );  glVertex3f( x+0.8, y+0.0, 0.006f );
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y+0.12, 0.006f );  // Canto sup-esq
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y+0.0, 0.006f );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x1,  y, 0.006f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.7,  y1-0.4, 0.006f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 0.006f );  // Canto sup-dir
         glEnd();
 
-        //LADO ESTE
-        glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
         glBegin( GL_TRIANGLE_STRIP );
-        glTexCoord2i( 1, 1 );  glVertex3f( x1, y+0.1, 0.006f );
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y+0.2, 0.006f );  // Canto sup-esq
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y+0.3, 0.006f );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.006f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 0.006f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x+0.2, y+0.5, 0.006f );  // Canto sup-dir
         glEnd();
 
-        glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
-        glBegin( GL_TRIANGLE_STRIP );
-        glTexCoord2i( 1, 1 );  glVertex3f( x1, y+0.3, 0.006f );
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y+0.5, 0.006f );  // Canto sup-esq
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y+0.7, 0.006f );
+        //prelongamento dos triangulos dos buracos **********************
+        glDisable(GL_TEXTURE_2D);
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.006f );  // Canto inf-esq
+        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.5,  y+0.2, 0.006f );  // Canto inf-esq
+        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.5,  y-1.0, -1.0f );  // Canto inf-esq
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y-1.0, -1.0f );  // Canto inf-esq
+
         glEnd();
-
-        glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
-        glBegin( GL_TRIANGLE_STRIP );
-        glTexCoord2i( 1, 1 );  glVertex3f( x1, y+0.7, 0.006f );
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.15, y1, 0.006f );  // Canto sup-esq
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1, 0.006f );
-        glEnd();
-
-        //LADO Norte
-        glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
-        glBegin( GL_TRIANGLE_STRIP );
-        glTexCoord2i( 1, 1 );  glVertex3f( x, y1, 0.006f );
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.2, y1, 0.006f );  // Canto sup-esq
-        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.2, y1-0.2, 0.006f );
-        glEnd();
-
-        glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
-        glBegin( GL_TRIANGLE_STRIP );
-        glTexCoord2i( 1, 1 );  glVertex3f( x, y1, 0.006f );
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.2, y1, 0.006f );  // Canto sup-esq
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.3, y1-0.2, 0.006f );
-        glEnd();
-
-        //Lado Este
-        glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
-        glBegin( GL_TRIANGLE_STRIP );
-        glTexCoord2i( 1, 1 );  glVertex3f( x, y, 0.006f );
-        glTexCoord2i( 0, 1 );  glVertex3f(  x, y1-0.15, 0.006f );  // Canto sup-esq
-        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.2, y+0.3, 0.006f );
-        glEnd();
-
-        glDisable( GL_TEXTURE_2D );
-        glColor3f( 0.4235f, 0.2117f, 0.0f );  // 1.0f = nao adulterar cores da textura
-        glBegin( GL_TRIANGLE_STRIP );
-        glTexCoord2i( 1, 1 );  glVertex3f( x, y1, 0.006f );
-        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.2, y1-0.2, 0.006f );  // Canto sup-esq
-        glTexCoord2i( 0, 1 );  glVertex3f(  x, y1-0.3, 0.006f );
-        glEnd();
-
-
-
-
 
     }
     else
     {
+                        //================[CHAO DE PEDRA]================
         glEnable( GL_TEXTURE_2D );
         glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CHAO_PEDRA] );
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
