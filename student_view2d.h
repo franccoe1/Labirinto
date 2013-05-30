@@ -48,7 +48,7 @@ Computer Graphics Maze.
 #define VIEW2D_COLOR_3UB_DOOR_CLOSED   VIEW2D_COLOR_3UB_WALL  // Nao usada
 #define VIEW2D_COLOR_3UB_FLOOR         0xB1, 0x89, 0x4E  // 0x66, 0x4F, 0x2D
 #define VIEW2D_COLOR_3UB_PLAYER1       0xFF, 0x33, 0x33  // Nao usada
-#define VIEW2D_COLOR_3UB_CHAVE         0xFF, 0xFF, 0xff
+#define VIEW2D_COLOR_3UB_CHAVE         0xFF, 0xFF, 0xFF
 #define VIEW2D_COLOR_3UB_BURACO        0xFF, 0x33, 0x33
 
 class View2D

@@ -325,16 +325,66 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y+0.1, 0.1f );  // Canto sup-esq
         glEnd();
 
-        //tecto
+        //TECTO
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
-        glColor3f( 0.4f, 0.0f, 0.0f );  //cor azul bebe
-        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.99f );  // Canto inf-esq
-        glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 0.99f );  // Canto inf-dir
-        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 0.99f );  // Canto sup-dir
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y, 0.99f );  // Canto sup-esq
+        glColor3f( 0.4f, 0.0f, 0.0f );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.01,  y+0.01, 0.807f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.01,  y1-0.01, 0.807f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1-0.01, y1-0.01, 0.807f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.01, y+0.01, 0.807f );  // Canto sup-esq
         glEnd();
+
+        //lado frente do tecto
+        glDisable(GL_TEXTURE_2D);
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glColor3f( 1.0f, 0.0f, 0.0f );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y-0.0001, 0.8f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x,  y-0.0001, 1.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y-0.0001, 1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y-0.0001, 0.8f );  // Canto sup-esq
+        glEnd();
+
+       //lado tras do tecto
+        glDisable(GL_TEXTURE_2D);
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glColor3f( 1.0f, 0.0f, 0.0f );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y1+0.0001, 0.8f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x,  y1+0.0001, 1.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1+0.0001, 1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1+0.0001, 0.8f );  // Canto sup-esq
+        glEnd();
+
+        //lado esquerdo do tecto
+        glDisable(GL_TEXTURE_2D);
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glColor3f( 1.0f, 0.0f, 0.0f );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x1,  y+0.1, 0.8f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x1,  y+0.1, 1.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1-0.1, 1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y1-0.1, 0.8f );  // Canto sup-esq
+        glEnd();
+
+        //lado direito do tecto
+        glDisable(GL_TEXTURE_2D);
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glColor3f( 1.0f, 0.0f, 0.0f );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y+0.1, 0.8f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x,  y+0.1, 1.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x, y1-0.1, 1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x, y1-0.1, 0.8f );  // Canto sup-esq
+        glEnd();
+
+
+
+
+
+
 
         // PILARES
 
@@ -633,8 +683,8 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glColor4f(0.5019607843f,0.9490196078f,1.0f,0.7f);
         glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.005f );  // Canto inf-esq
         glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 0.005f );  // Canto inf-dir
-        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 0.005f );  // Canto sup-dir
-        glTexCoord2i( 0, 1 );  glVertex3f(  x1, y, 0.005f );  // Canto sup-esq
+        glTexCoord2i( 1, 1 );  glVertex3f( x+0.5, y1, 0.005f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.5, y, 0.005f );  // Canto sup-esq
         glEnd();
         glDisable(GL_BLEND);
 
