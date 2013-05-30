@@ -724,7 +724,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
         glBegin( GL_QUADS );
-        glColor4f(0.5019607843f,0.9490196078f,1.0f,0.7f);
+        glColor4f(0.5019607843f,0.9490196078f,1.0f,0.5f);
         glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.005f );  // Canto inf-esq
         glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 0.005f );  // Canto inf-dir
         glTexCoord2i( 1, 1 );  glVertex3f( x+0.5, y1, 0.005f );  // Canto sup-dir
@@ -767,15 +767,91 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 1, 1 );  glVertex3f( x+0.2, y+0.5, 0.006f );  // Canto sup-dir
         glEnd();
 
+
+
+
         //prelongamento dos triangulos dos buracos **********************
-        glDisable(GL_TEXTURE_2D);
+
+
+        //  Lado nº1
+        glDisable( GL_TEXTURE_2D );
+        glColor3f( 0.0f, 0.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
-        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.006f );  // Canto inf-esq
-        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.5,  y+0.2, 0.006f );  // Canto inf-esq
-        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.5,  y-1.0, -1.0f );  // Canto inf-esq
-        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y-1.0, -1.0f );  // Canto inf-esq
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.5,  y+0.2, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x+0.5,  y+0.2, -1.0f );  // Canto sup-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x,  y, -1.0f  );
+        glEnd();
 
+
+        glColor3f( 1.0f, 0.0f, 0.0f );  // 1.0f = nao adulterar cores da textura
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.5,  y+0.2, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x1,  y, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1,  y, -1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.5,  y+0.2, -1.0f );
+        glEnd();
+
+        // Lado nº2
+
+        glColor3f( 0.0f, 0.0f, 1.0f );
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y1, 0.0 );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.3,  y1-0.3, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x+0.3,  y1-0.3, -1.0f  );  // Canto sup-dir
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y1, -1.0 );
+        glEnd();
+
+        glColor3f( 1.0f, 0.0f, 0.0f );
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.3,  y1-0.3, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x1,  y1, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 0 );  glVertex3f( x1,  y1, -1.0f );  // Canto sup-dir
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.3,  y1-0.3, -1.0f );
+        glEnd();
+
+
+        // Lado nº3
+        glColor3f( 0.0f, 0.0f, 1.0f );
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x1,  y, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.7,  y1-0.4, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.7,  y1-0.4, -1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 0 );  glVertex3f(  x1,  y, -1.0f );
+        glEnd();
+
+        glColor3f( 1.0f, 0.0f, 0.0f );
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.7,  y1-0.4, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, 0.0f );  // Canto sup-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x1, y1, -1.0f );
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.7,  y1-0.4, -1.0f );
+        glEnd();
+
+
+        //Lado nº4
+        glColor3f( 0.0f, 0.0f, 1.0f );
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.2, y+0.5, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.2, y+0.5, -1.0f );  // Canto sup-dir
+        glTexCoord2i( 0, 0 );  glVertex3f(  x,  y, -1.0f );
+        glEnd();
+
+        glColor3f( 1.0f, 0.0f, 0.0f );
+        glBegin( GL_QUADS );
+        glNormal3i( 0, 0, 1 );
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.2, y+0.5, 0.0f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x,  y1, 0.0f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x,  y1, -1.0f );  // Canto sup-dir
+        glTexCoord2i( 1, 0 );  glVertex3f( x+0.2, y+0.5, -1.0f );
         glEnd();
 
     }
