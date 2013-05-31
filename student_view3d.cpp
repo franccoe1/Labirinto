@@ -860,46 +860,64 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glColor3ub(VIEW3D_COLOR_3UB_FLOOR_KEY);
 
         glBegin(GL_QUADS);
-        glColor3f(1.0f,1.0f,1.0f);
+        glColor3f(0.33f,0.33f,0.88f);
         glNormal3i(0,-1,0);
-        glTexCoord2i(0,0); glVertex3f(x+0.70, y+0.70, 0.4f);
-        glTexCoord2i(1,0); glVertex3f(x-0.70, y+0.70, 0.4f);
-        glTexCoord2i(1,1); glVertex3f(x-0.70, y-0.70, 0.4f);
-        glTexCoord2i(0,1); glVertex3f(x+0.70, y-0.70, 0.4f);
+        glTexCoord2i(0,0); glVertex3f(x+0.3, y+0.3, 0.4f);
+        glTexCoord2i(1,0); glVertex3f(x1-0.3, y+0.3, 0.4f);
+        glTexCoord2i(1,1); glVertex3f(x+0.70, y1-0.3, 0.4f);
+        glTexCoord2i(0,1); glVertex3f(x+0.3, y+0.7, 0.4f);
 
-        glBegin(GL_TRIANGLES);
-        glColor3f(1.0f,1.0f,1.0f);
+
+
+
+        glBegin(GL_TRIANGLE_STRIP);
+        glColor3f(0.08f,0.8f,0.8f);
         glNormal3i(1,0,0);
-
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(0,1); glVertex3f(x+0.3f, y1-0.7f, 0.4f);
-        glColor3f(1.0f,1.0f,1.0f);
+        glTexCoord2i(0,1); glVertex3f(x+0.3f, y+0.3f, 0.4f);
+        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
         glTexCoord2i(1,0); glVertex3f(x1-0.3f, y+0.3f, 0.4f);
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
-
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(0,1); glVertex3f(x1-0.3f, y+0.3f, 0.4f);
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(1,0); glVertex3f(x+0.7f, y1-0.3f, 0.4f);
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
-
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(0,1); glVertex3f(x+0.3f, y1-0.7f, 0.4f);
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(1,0); glVertex3f(x1-0.7f, y-0.7f, 0.4f);
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
-
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(0,1); glVertex3f(x+0.7f, y1-0.3f, 0.4f);
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(1,0); glVertex3f(x1-0.7f, y+0.7f, 0.4f);
-        glColor3f(1.0f,1.0f,1.0f);
-        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
-
         glEnd();
+
+
+        glBegin(GL_TRIANGLE_STRIP);
+        glColor3f(0.0f,1.0f,0.0f);
+        glNormal3i(1,0,0);
+        glTexCoord2i(0,1); glVertex3f(x1-0.3f, y+0.3f, 0.4f);
+        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
+        glTexCoord2i(1,0); glVertex3f(x1-0.3f, y1-0.3f, 0.4f);
+        glEnd();
+
+
+
+        glBegin(GL_TRIANGLE_STRIP);
+        glColor3f(0.5f,0.0f,0.5f);
+        glNormal3i(1,0,0);
+        glTexCoord2i(1,0); glVertex3f(x+0.3f, y1-0.3f, 0.4f);
+        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
+        glTexCoord2i(1,0); glVertex3f(x1-0.3f, y1-0.3f, 0.4f);
+        glEnd();
+
+
+        glBegin(GL_TRIANGLE_STRIP);
+        glColor3f(0.0f,0.0f,1.0f);
+        glNormal3i(1,0,0);
+        glTexCoord2i(1,0); glVertex3f(x+0.3f, y1-0.3f, 0.4f);
+        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
+        glTexCoord2i(0,1); glVertex3f(x+0.3f, y+0.3f, 0.4f);
+        glEnd();
+
+        glBegin(GL_TRIANGLE_STRIP);
+        glColor3f(0.08f,0.8f,0.8f);
+        glNormal3i(1,0,0);
+        glTexCoord2i(0,1); glVertex3f(x+0.3f, y+0.3f, 0.4f);
+        glTexCoord2i(1,1); glVertex3f(x1-0.5f, y1-0.5f, 0.8f);
+        glTexCoord2i(1,0); glVertex3f(x1-0.3f, y+0.3f, 0.4f);
+        glEnd();
+
+
+
+
+
 
         glEnable( GL_TEXTURE_2D );
         glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CHAO_PEDRA] );
