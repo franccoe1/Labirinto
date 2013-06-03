@@ -25,6 +25,10 @@ Computer Graphics Maze.
 #include "student_view3d.h"
 #include "map.h"
 #include "compass.h"
+#include <math.h>
+
+
+
 
 
 /* Construtor
@@ -32,7 +36,7 @@ Computer Graphics Maze.
 */
 View3D::View3D( Map *map, const QImage textures[VIEW3D_TEXTURES_NUMBER] )
 {
-    int n;
+    int n,i;
 
     this->map = map;
 
@@ -198,7 +202,12 @@ void View3D::drawMapBlock( int x1, int y1, int x2, int y2 )
 
 /* Desenha uma celula do mapa.
    Atencao que "this->map" pode ser NULL!
+
 */
+
+
+
+
 void View3D::drawCell( GLfloat x, GLfloat y, Cell c )
 {
     if( c.isWallOrDoor() )
@@ -231,7 +240,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
     }
 
-                        //=================[PORTA]=================
+    //=================[PORTA]=================
     if( pc->isDoor() )
     {
         // Tecto DA PORTA*************************
@@ -252,7 +261,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
 
 
-                        //=================[DEGRAU DA PORTA]=================
+        //=================[DEGRAU DA PORTA]=================
 
         //chao azul*************************
         glDisable(GL_TEXTURE_2D);
@@ -310,7 +319,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1-0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-                        //=================[CHAO DA PORTA]=================
+        //=================[CHAO DA PORTA]=================
 
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
@@ -322,7 +331,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y+0.1, 0.1f );  // Canto sup-esq
         glEnd();
 
-                        //=================[TECTO DA PORTA]=================
+        //=================[TECTO DA PORTA]=================
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -344,7 +353,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y-0.0001, 0.8f );  // Canto sup-esq
         glEnd();
 
-       //lado tras do tecto*************************
+        //lado tras do tecto*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -378,7 +387,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glEnd();
 
 
-                  //=================[PILARES DA PORTA]=================
+        //=================[PILARES DA PORTA]=================
 
 
         //======[PILAR 1]======
@@ -605,16 +614,11 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glEnd();
 
 
-                    //=================[CANDEIROS]=================
-        glDisable(GL_TEXTURE_2D);
-        glBegin(GL_QUADS);
-        glNormal3i( 0, 0, 1 );  // Normal a apontar para a esquerda
-        glColor3ub(0xFF,0xFF,0xFF);
-        glTexCoord2i( 0, 0 );  glVertex3f(  x+0.1, y, 0.7f );  // Canto inf-esq
-        glTexCoord2i( 1, 0 );  glVertex3f(  x+0.1,  y1, 0.9f );  // Canto inf-dir
-        glTexCoord2i( 1, 1 );  glVertex3f(  x+0.1,  y1, 0.9f );  // Canto sup-dir
-        glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y, 0.7f );  // Canto sup-esq
-        glEnd();
+
+
+
+
+
     }
     else
     {
@@ -655,7 +659,12 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
 /* Desenha uma celula do mapa que e' chao.
    Atencao que "this->map" pode ser NULL!
 */
-void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
+
+
+
+
+
+   void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
 {
     GLfloat x1 = x + 1.0f;
     GLfloat y1 = y + 1.0f;
@@ -663,7 +672,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     // Verificoes basicas
     assert( pc != NULL );
 
-                        //================[TECTO]================
+    //================[TECTO]================
 
     glEnable( GL_TEXTURE_2D );
     glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CEILING] );
@@ -676,7 +685,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     glTexCoord2i( 0, 1 );  glVertex3f(  x, y1, 1.0f );  // Canto sup-esq
     glEnd();
 
-                        //================[BURACO]================
+    //================[BURACO]================
     if( pc->object == OBJ_FLOOR_PIT )
     {
 
@@ -719,7 +728,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f( x1,  y, -1.0f );  // Canto sup-esq */
         glEnd();
 
-                    //================[RECORTES DO BURACO (ESCAVADO)]================
+        //================[RECORTES DO BURACO (ESCAVADO)]================
 
         //LADO NORTE***************************************
         glDisable( GL_TEXTURE_2D );
@@ -935,7 +944,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     }
     else
     {
-                        //================[CHAO DE PEDRA]================
+        //================[CHAO DE PEDRA]================
         glEnable( GL_TEXTURE_2D );
         glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CHAO_PEDRA] );
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
