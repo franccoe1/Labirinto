@@ -136,6 +136,7 @@ void ViewMap::paint( int x, int y, Cell c )
         glColor3ub( VIEWMAP_COLOR_3UB_FLOOR );
     if( c.object == OBJ_FLOOR_PIT )
     {
+      //==============[DESENHA CIRCULOS NO LUGAR NOS BURACOS NO VIEWMAP]===========
         glBegin(GL_POLYGON);
         x0 = x; x1 = x +0.5f;
         y0 = y; y1 = y+ 0.5f;
