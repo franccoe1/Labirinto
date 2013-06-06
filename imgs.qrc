@@ -11,8 +11,7 @@
         <file>mainwindow.texture.ceiling.png</file>
         <file>mainwindow.texture.floor.png</file>
         <file>chaopedra.PNG</file>
-        <file>tijolo.PNG</file>
-        <file>buraco.PNG</file>
         <file>peixes.PNG</file>
+        <file>tijolo.PNG</file>
     </qresource>
 </RCC>

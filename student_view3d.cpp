@@ -231,7 +231,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
     }
 
-                        //=================[PORTA]=================
+    //=================[PORTA]=================
     if( pc->isDoor() )
     {
         // Tecto DA PORTA*************************
@@ -252,7 +252,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
 
 
-                        //=================[DEGRAU DA PORTA]=================
+        //=================[DEGRAU DA PORTA]=================
 
         //chao azul*************************
         glDisable(GL_TEXTURE_2D);
@@ -310,7 +310,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x+0.1, y1-0.1, 0.0f );  // Canto sup-esq
         glEnd();
 
-                        //=================[CHAO DA PORTA]=================
+        //=================[CHAO DA PORTA]=================
 
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
@@ -322,7 +322,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1-0.1, y+0.1, 0.1f );  // Canto sup-esq
         glEnd();
 
-                        //=================[TECTO DA PORTA]=================
+        //=================[TECTO DA PORTA]=================
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -344,7 +344,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f(  x1, y-0.0001, 0.8f );  // Canto sup-esq
         glEnd();
 
-       //lado tras do tecto*************************
+        //lado tras do tecto*************************
         glDisable(GL_TEXTURE_2D);
         glBegin( GL_QUADS );
         glNormal3i( 0, 0, 1 );
@@ -378,7 +378,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
         glEnd();
 
 
-                  //=================[PILARES DA PORTA]=================
+        //=================[PILARES DA PORTA]=================
 
 
         //======[PILAR 1]======
@@ -569,104 +569,155 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
     }
     else if( pc->object == OBJ_WALL_LIGHT )
     {
-
-        //============[CANDEIRO REDONDO]=============
-                glDisable(GL_TEXTURE_2D);
-                glEnable(GL_BLEND);
-                glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-
-                //glEnable( GL_LIGHTING );
-               // glLightf ( GL_LIGHT1, GL_AMBIENT, -1.0  );
-                glPushMatrix();//pilha
-
-                GLUquadricObj *quadric;
-                quadric = gluNewQuadric();
-                glTranslatef( x,y+0.5f,1.0f);//rotacao da esfera
-                glColor4f(0.7f,0.7f,1.0f,0.8f);
-                gluSphere( quadric , 0.2f , 10 , 10 );//esfera
-
-                glPopMatrix();
-                glDisable(GL_LIGHTING);
-                glDisable(GL_BLEND);
-
-             //===================KEY
-
-                glDisable(GL_TEXTURE_2D); //azul
-                //glEnable(GL_BLEND);
-                glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-                glPushMatrix();//pilha
-                GLUquadricObj *quadric4;
-                quadric = gluNewQuadric();
-                glTranslatef( x-0.6,y-0.3,0.5f);//rotacao da esfera
-                glColor4f(0.4235f, 0.2117f, 0.5f,0.8f);
-                gluSphere( quadric , 0.05f , 10 , 10 );//esfera
+        /*
+        //===================[KEY]==================
+        glDisable(GL_TEXTURE_2D); //azul
+        //glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+        glPushMatrix();//pilha
+        GLUquadricObj *quadric6;
+        quadric6 = gluNewQuadric();
+        glTranslatef( x-0.6,y-0.3,0.5f);//rotacao da esfera
+        glColor4f(0.4235f, 0.2117f, 0.5f,0.8f);
+        gluSphere( quadric6 , 0.05f , 10 , 10 );//esfera
 
 
-                glPopMatrix();
-                //glDisable(GL_BLEND);
-                glDisable(GL_TEXTURE_2D); //laranja
-                glPushMatrix();//pilha
-                GLUquadricObj *quadric3;
-                quadric = gluNewQuadric();
-                glTranslatef( x-0.65,y-0.3,0.5f);//rotacao da esfera
-                glColor4f(0.4235f, 0.2117f, 0.5f,0.8f);
-                gluSphere( quadric , 0.05f , 10 , 10 );//esfera
-                glPopMatrix();
+        glPopMatrix();
+        //glDisable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D); //laranja
+        glPushMatrix();//pilha
+        GLUquadricObj *quadric5;
+        quadric5 = gluNewQuadric();
+        glTranslatef( x-0.65,y-0.3,0.5f);//rotacao da esfera
+        glColor4f(0.4235f, 0.2117f, 0.5f,0.8f);
+        gluSphere( quadric5 , 0.05f , 10 , 10 );//esfera
+        glPopMatrix();
 
-                glBegin( GL_QUADS );
-                glColor3f( 0.4235f, 0.2117f, 0.5f );
-                glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
-                glTexCoord2i( 0, 0 );  glVertex3f( x-0.6 , y-0.3, 0.48f );  // Canto inf-esq
-                glTexCoord2i( 1, 0 );  glVertex3f( x-0.6, y-0.3, 0.52f );  // Canto inf-dir
-                glTexCoord2i( 1, 1 );  glVertex3f( x-0.4, y-0.3, 0.52f );  // Canto sup-dir
-                glTexCoord2i( 0, 1 );  glVertex3f( x-0.4,  y-0.3, 0.48f );  // Canto sup-esq
-//dentes da chave
-                glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
-                glTexCoord2i( 0, 0 );  glVertex3f( x-0.5 , y-0.3, 0.48f );  // Canto inf-esq
-                glTexCoord2i( 1, 0 );  glVertex3f( x-0.48, y-0.3, 0.48f );  // Canto inf-dir
-                glTexCoord2i( 1, 1 );  glVertex3f( x-0.48, y-0.3, 0.45f );  // Canto sup-dir
-                glTexCoord2i( 0, 1 );  glVertex3f( x-0.5,  y-0.3, 0.45f );  // Canto sup-esq
+        glBegin( GL_QUADS );
+        glColor3f( 0.4235f, 0.2117f, 0.5f );
+        glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
+        glTexCoord2i( 0, 0 );  glVertex3f( x-0.6 , y-0.3, 0.48f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x-0.6, y-0.3, 0.52f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x-0.4, y-0.3, 0.52f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f( x-0.4,  y-0.3, 0.48f );  // Canto sup-esq
 
-
-                glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
-                glTexCoord2i( 0, 0 );  glVertex3f( x-0.47 , y-0.3, 0.48f );  // Canto inf-esq
-                glTexCoord2i( 1, 0 );  glVertex3f( x-0.46, y-0.3, 0.48f );  // Canto inf-dir
-                glTexCoord2i( 1, 1 );  glVertex3f( x-0.46, y-0.3, 0.465f );  // Canto sup-dir
-                glTexCoord2i( 0, 1 );  glVertex3f( x-0.47,  y-0.3, 0.465f );  // Canto sup-esq
-
-                glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
-                glTexCoord2i( 0, 0 );  glVertex3f( x-0.45 , y-0.3, 0.48f );  // Canto inf-esq
-                glTexCoord2i( 1, 0 );  glVertex3f( x-0.44, y-0.3, 0.48f );  // Canto inf-dir
-                glTexCoord2i( 1, 1 );  glVertex3f( x-0.44, y-0.3, 0.465f );  // Canto sup-dir
-                glTexCoord2i( 0, 1 );  glVertex3f( x-0.45,  y-0.3, 0.465f );  // Canto sup-esq
-
-                glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
-                glTexCoord2i( 0, 0 );  glVertex3f( x-0.43 , y-0.3, 0.48f );  // Canto inf-esq
-                glTexCoord2i( 1, 0 );  glVertex3f( x-0.41, y-0.3, 0.48f );  // Canto inf-dir
-                glTexCoord2i( 1, 1 );  glVertex3f( x-0.41, y-0.3, 0.45f );  // Canto sup-dir
-                glTexCoord2i( 0, 1 );  glVertex3f( x-0.43,  y-0.3, 0.45f );  // Canto sup-esq
-                glEnd();
+        //dentes da chave
+        glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
+        glTexCoord2i( 0, 0 );  glVertex3f( x-0.5 , y-0.3, 0.48f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x-0.48, y-0.3, 0.48f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x-0.48, y-0.3, 0.45f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f( x-0.5,  y-0.3, 0.45f );  // Canto sup-esq
 
 
+        glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
+        glTexCoord2i( 0, 0 );  glVertex3f( x-0.47 , y-0.3, 0.48f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x-0.46, y-0.3, 0.48f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x-0.46, y-0.3, 0.465f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f( x-0.47,  y-0.3, 0.465f );  // Canto sup-esq
+
+        glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
+        glTexCoord2i( 0, 0 );  glVertex3f( x-0.45 , y-0.3, 0.48f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x-0.44, y-0.3, 0.48f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x-0.44, y-0.3, 0.465f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f( x-0.45,  y-0.3, 0.465f );  // Canto sup-esq
+
+        glNormal3i( 0, 0, 1 );  // Normal a apontar para a direita
+        glTexCoord2i( 0, 0 );  glVertex3f( x-0.43 , y-0.3, 0.48f );  // Canto inf-esq
+        glTexCoord2i( 1, 0 );  glVertex3f( x-0.41, y-0.3, 0.48f );  // Canto inf-dir
+        glTexCoord2i( 1, 1 );  glVertex3f( x-0.41, y-0.3, 0.45f );  // Canto sup-dir
+        glTexCoord2i( 0, 1 );  glVertex3f( x-0.43,  y-0.3, 0.45f );  // Canto sup-esq
+        glEnd();
+
+        */
+
+        //============[CANDEIRO REDONDO VIRADO A OESTE]=============
+
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
+        glEnable(GL_LIGHTING);
+        glEnable(GL_COLOR_MATERIAL);
+        glShadeModel(GL_SMOOTH);
+        glEnable(GL_LIGHT0);
+
+        glPushMatrix();//pilha
+
+        GLUquadricObj *quadric;
+        quadric = gluNewQuadric();
+        glTranslatef( x,y+0.5f,1.0f);//rotacao da esfera
+        glColor4f(0.5019607843f,0.9490196078f,1.0f,0.8f);//azul
+        gluSphere( quadric , 0.2f , 10 , 10 );//esfera
+
+        glPopMatrix();
+        glDisable(GL_LIGHTING);
+        glDisable(GL_BLEND);
 
 
 
-        //============[2 CANDEIRO REDONDO]=============
-                glDisable(GL_TEXTURE_2D);
-                glEnable(GL_BLEND);
-                glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+        //============[2 CANDEIRO REDONDO VIRADO A NORTE]=============
 
-                glPushMatrix();//pilha
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
-                GLUquadricObj *quadric2;
-                quadric2 = gluNewQuadric();
-                glTranslatef( x+0.5,y,1.0f);//rotacao da esfera
-                glColor4f(0.5019607843f,0.9490196078f,1.0f,0.8f);
-                gluSphere( quadric , 0.2f , 10 , 10 );//esfera
+        glEnable(GL_LIGHTING);
+        glEnable(GL_COLOR_MATERIAL);
+        glShadeModel(GL_SMOOTH);
+        glEnable(GL_LIGHT0);
+        glEnable(GL_LIGHT1);
+        glEnable(GL_LIGHT2);
+        glEnable(GL_LIGHT3);
 
-                glPopMatrix();
+        glPushMatrix();         //pilha
 
-                glDisable(GL_BLEND);
+        GLUquadricObj *quadric2;
+        quadric2 = gluNewQuadric();
+        glTranslatef( x+0.5,y1,1.0f);//rotacao da esfera
+        glColor4f(0.39607f,0.91764f,0.11764,0.8f);//verde
+        gluSphere( quadric , 0.2f , 10 , 10 );//esfera
+
+        glPopMatrix();
+
+        glDisable(GL_BLEND);
+
+        //============[3 CANDEIRO REDONDO VIRADO A SUL]=============
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
+        glPushMatrix();//pilha
+
+        GLUquadricObj *quadric3;
+        quadric3 = gluNewQuadric();
+        glTranslatef( x+0.5,y,1.0f);//rotacao da esfera
+        glColor4f(0.94117f,0.88627f,0.20784f,0.8f);//amarelo
+        gluSphere( quadric , 0.2f , 10 , 10 );//esfera
+
+        glPopMatrix();
+
+        glDisable(GL_BLEND);
+
+        //============[3 CANDEIRO REDONDO VIRADO A ESTE]=============
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
+        glPushMatrix();//pilha
+
+        GLUquadricObj *quadric4;
+        quadric4 = gluNewQuadric();
+        glTranslatef( x1,y+0.5,1.0f);//rotacao da esfera
+        glColor4f(0.99215f,0.014117f,0.014117f,0.8f);//vermelho
+        gluSphere( quadric , 0.2f , 10 , 10 );//esfera
+
+        glPopMatrix();
+
+        glDisable(GL_BLEND);
+        glDisable(GL_LIGHT0);
+        glDisable(GL_LIGHT1);
+        glDisable(GL_LIGHT2);
+        glDisable(GL_LIGHT3);
 
 
         //====================[DESENHA PARECE COM TEXTURA]=========================
@@ -710,7 +761,7 @@ void View3D::drawWall( GLfloat x, GLfloat y, Cell *const pc )
     else
     {
 
-            //===================[DESENHA PAREDE NORMAL]======================
+        //===================[DESENHA PAREDE NORMAL]======================
         glBegin( GL_QUADS );
 
         // Face da frente (dentro do labirinto, a olhar para Norte)
@@ -756,7 +807,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     // Verificoes basicas
     assert( pc != NULL );
 
-                        //================[TECTO]================
+    //================[TECTO]================
 
     glEnable( GL_TEXTURE_2D );
     glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CEILING] );
@@ -769,7 +820,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     glTexCoord2i( 0, 1 );  glVertex3f(  x, y1, 1.0f );  // Canto sup-esq
     glEnd();
 
-                    //=======================[BURACO]======================
+    //=======================[BURACO]======================
     if( pc->object == OBJ_FLOOR_PIT )
     {
 
@@ -812,7 +863,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glTexCoord2i( 0, 1 );  glVertex3f( x1,  y, -1.0f );  // Canto sup-esq */
         glEnd();
 
-                    //================[RECORTES DO BURACO (ESCAVADO)]================
+        //================[RECORTES DO BURACO (ESCAVADO)]================
 
         //LADO NORTE***************************************
         glDisable( GL_TEXTURE_2D );
@@ -1011,7 +1062,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
         glEnd();
 
 
-             //==================[CHAO DE PEDRA  NA PIRAMIDE]==================
+        //==================[CHAO DE PEDRA  NA PIRAMIDE]==================
 
         glEnable( GL_TEXTURE_2D );
         glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CHAO_PEDRA] );
@@ -1028,7 +1079,7 @@ void View3D::drawFloor( GLfloat x, GLfloat y, Cell *const pc )
     }
     else
     {
-                        //================[CHAO DE PEDRA]================
+        //================[CHAO DE PEDRA]================
         glEnable( GL_TEXTURE_2D );
         glBindTexture( GL_TEXTURE_2D, id_textures[VIEW3D_IX_TEXTURE_CHAO_PEDRA] );
         glColor3f( 1.0f, 1.0f, 1.0f );  // 1.0f = nao adulterar cores da textura
