@@ -13,6 +13,10 @@ representados com círculos em vez de quadrados.
 C.   Como no jogo não caímos nos buracos, o cliente pede para haver uma superfície de aspecto
 vidrado (semitransparente, usando blending do OpenGL) por cima do buraco.
 
+D.   Desenhar chaves ocasionalmente nos corredores. Neste momento as chaves são desenhadas
+como azulejos cinza claro. Devem alterar isto para serem (pelo menos) pequenas pirâmides
+de base quadrangular (como as dos Egípcios) a flutuar por cima desse azulejo.
+
 G.   Desenhar portas ocasionalmente nas paredes. Neste momento as portas são
 desenhadas como paredes de cor negra. Devem alterar isto para serem (pelo
 menos) um degrau por cima desse azulejo.
@@ -27,9 +31,6 @@ rodeia (usando iluminação em OpenGL).
 ================
 Em falta:
 ================
-D.   Desenhar chaves ocasionalmente nos corredores. Neste momento as chaves são desenhadas
-como azulejos cinza claro. Devem alterar isto para serem (pelo menos) pequenas pirâmides
-de base quadrangular (como as dos Egípcios) a flutuar por cima desse azulejo.
 
 E.   O cliente valoriza se as chaves não forem meras pirâmides, mas tiverem o
 aspecto de uma grande chave semelhante á exibida exibida á direita.
